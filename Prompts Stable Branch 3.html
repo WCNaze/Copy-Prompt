@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+  	html { 
+  background: url(Images/Background.png) no-repeat fixed; 
+  max-width: 100%;
+  max-height: 100%;
+}
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #EEEEEE;
+  background-color: #ea3e37;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #DC2820}
+
+.button:active {
+  background-color: #C71E17;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+h3 {
+	font-family: Avenir Black, Arial Black, sans-serif;
+}
+
+h4 {
+	font-family: Avenir Black, Arial Black, sans-serif;
+}
+
+input[type=text] {
+  width: 35%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  transition: 0.5s;
+  outline: none;
+  border-radius: 5px;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+  background-color: #FFCECC;
+}
+
+  </style>
+</head>
+<body>
+	<p>
+		<img src="Images/Mathnasium Logo.jpeg" style="object-fit:contain; width:25%; display: block; object-position: 0px 11px;">
+	</p>
+<section>
+<p></p>
+<h3>Homework Notes</h3>
+<button onclick="Easy()" class="button">Easy Schoolwork</button>
+<button onclick="Hard()" class="button">Hard Schoolwork</button>
+<p></p>
+	<h4>Type the PK Numbers as "####,####" completed below and select which prompt to use</h4>
+<input type="text" value="" id="PKS">
+<p></p>
+<h4>Type the pages as "#-#,#-#"</h4>
+<input type="text" value="" id="PAGES">
+<p></p>
+<button onclick="Prompt1()" class="button">3 Average</button>
+<button onclick="Prompt2()" class="button">2 Average</button>
+<button onclick="Prompt3()" class="button">1 Average</button>
+
+<input id="bin">
+<p></p>
+<script>
+function Prompt1() {
+  /* Get the text field */
+  var copyText = document.getElementById("PKS");
+  var copyPage = document.getElementById("PAGES");
+  var PKlist = copyText.value.split(/[\s,]+/);
+  var Pagelist = copyPage.value.split(/[\s,]+/);
+  console.log(copyText.value.split(/[\s,]+/));
+  var numpagejoin = "";
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+  if (PKlist.length == Pagelist.length && PKlist[0] != ''){
+  	for (let k=0; k<PKlist.length; k++){
+  		numpagejoin +="/PK-"+PKlist[k]+" pages "+Pagelist[k]
+  	}
+  	navigator.clipboard.writeText(`----------------${numpagejoin}/ 1. Putting in Effort Score = 3/ 2. Focus & Accuracy Score = 3 / 3. Confidence & Speed Score = 3 /4. Mathitude (Attitude towards Math) Score = 3 /5. Respectfulness Score = 3 / (Score Scale above: 1 = Needs Work, 2 = Meets Expectations, 3 = Impressive) /---------------/Extra Comment: ??? /`).then(() => {
+        window.alert(`Input: ${numpagejoin}`);
+      })
+      .catch(() => {
+      	try {
+      		var textblock = document.getElementById("bin")
+      		textblock.value = "----------------"+numpagejoin+"/ 1. Putting in Effort Score = 3/ 2. Focus & Accuracy Score = 3 / 3. Confidence & Speed Score = 3 /4. Mathitude (Attitude towards Math) Score = 3 /5. Respectfulness Score = 3 / (Score Scale above: 1 = Needs Work, 2 = Meets Expectations, 3 = Impressive) /---------------/Extra Comment: ??? /";
+      		textblock.select();
+      		textblock.setSelectionRange(0,99999);
+           var retVal = document.execCommand("copy");
+           console.log('Copy to clipboard returns: ' + retVal); 
+       } catch (err) { console.log('Error while copying to clipboard: ' + err); };
+      });
+
+  	//window.alert(`Input: ${numpagejoin}`);
+  } else {
+  	window.alert("Check that you have pages for each PK");
+  };
+  
+  };
+function Prompt2() {
+  /* Get the text field */
+  var copyText = document.getElementById("PKS");
+  var copyPage = document.getElementById("PAGES");
+  var PKlist = copyText.value.split(/[\s,]+/);
+  var Pagelist = copyPage.value.split(/[\s,]+/);
+  console.log(copyText.value.split(/[\s,]+/));
+  var numpagejoin = "";
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+  if (PKlist.length == Pagelist.length && PKlist[0] != ''){
+  	for (let k=0; k<PKlist.length; k++){
+  		numpagejoin +="/PK-"+PKlist[k]+" pages "+Pagelist[k]
+  	}
+  	navigator.clipboard.writeText(`----------------${numpagejoin}/ 1. Putting in Effort Score = 2/ 2. Focus & Accuracy Score = 2 / 3. Confidence & Speed Score = 2 /4. Mathitude (Attitude towards Math) Score = 2 /5. Respectfulness Score = 2 / (Score Scale above: 1 = Needs Work, 2 = Meets Expectations, 3 = Impressive) /---------------/Extra Comment: ??? /`).then(() => {
+        window.alert(`Input: ${numpagejoin}`);
+      })
+      .catch(() => {
+      	try {
+      		var textblock = document.getElementById("bin")
+      		textblock.value = "----------------"+numpagejoin+"/ 1. Putting in Effort Score = 2/ 2. Focus & Accuracy Score = 2 / 3. Confidence & Speed Score = 2 /4. Mathitude (Attitude towards Math) Score = 2 /5. Respectfulness Score = 2 / (Score Scale above: 1 = Needs Work, 2 = Meets Expectations, 3 = Impressive) /---------------/Extra Comment: ??? /";
+      		textblock.select();
+      		textblock.setSelectionRange(0,99999);
+           var retVal = document.execCommand("copy");
+           console.log('Copy to clipboard returns: ' + retVal); 
+       } catch (err) { console.log('Error while copying to clipboard: ' + err); };
+      });
+
+  	//window.alert(`Input: ${numpagejoin}`);
+  } else {
+  	window.alert("Check that you have pages for each PK");
+  };
+  
+  };
+function Prompt3() {
+  /* Get the text field */
+  var copyText = document.getElementById("PKS");
+  var copyPage = document.getElementById("PAGES");
+  var PKlist = copyText.value.split(/[\s,]+/);
+  var Pagelist = copyPage.value.split(/[\s,]+/);
+  console.log(copyText.value.split(/[\s,]+/));
+  var numpagejoin = "";
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+  if (PKlist.length == Pagelist.length && PKlist[0] != ''){
+  	for (let k=0; k<PKlist.length; k++){
+  		numpagejoin +="/PK-"+PKlist[k]+" pages "+Pagelist[k]
+  	}
+  	navigator.clipboard.writeText(`----------------${numpagejoin}/ 1. Putting in Effort Score = 2/ 2. Focus & Accuracy Score = 2 / 3. Confidence & Speed Score = 2 /4. Mathitude (Attitude towards Math) Score = 2 /5. Respectfulness Score = 2 / (Score Scale above: 1 = Needs Work, 2 = Meets Expectations, 3 = Impressive) /---------------/Extra Comment: ??? /`).then(() => {
+        window.alert(`Input: ${numpagejoin}`);
+      })
+      .catch(() => {
+      	try {
+      		var textblock = document.getElementById("bin")
+      		textblock.value = "----------------"+numpagejoin+"/ 1. Putting in Effort Score = 2/ 2. Focus & Accuracy Score = 2 / 3. Confidence & Speed Score = 2 /4. Mathitude (Attitude towards Math) Score = 2 /5. Respectfulness Score = 2 / (Score Scale above: 1 = Needs Work, 2 = Meets Expectations, 3 = Impressive) /---------------/Extra Comment: ??? /";
+      		textblock.select();
+      		textblock.setSelectionRange(0,99999);
+           var retVal = document.execCommand("copy");
+           console.log('Copy to clipboard returns: ' + retVal); 
+       } catch (err) { console.log('Error while copying to clipboard: ' + err); };
+      });
+
+  	//window.alert(`Input: ${numpagejoin}`);
+  } else {
+  	window.alert("Check that you have pages for each PK");
+  };
+  
+  };
+function Easy(){
+	  /* Get the text field */
+  var copyText = document.getElementById("bin");
+  copyText.value = "When asked How is math in school, Student said math is easy in school and no support needed. Keep it up to get into advanced Math Class in School!"
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+  navigator.clipboard.writeText(`${copyText.value}`).then(() => {
+        window.alert(`Input: ${copyText.value}`);
+      })
+      .catch(() => {
+      	try {
+           var retVal = document.execCommand("copy");
+           console.log('Copy to clipboard returns: ' + retVal); 
+       } catch (err) { console.log('Error while copying to clipboard: ' + err); };
+      });
+
+  	//window.alert(`Input: ${numpagejoin}`);
+};
+function Hard(){
+	  /* Get the text field */
+  var copyText = document.getElementById("bin");
+  copyText.value = "When asked How is math in school, Student expressed facing challenges with current school math topic in school. Parents are encouraged to take photo of current math to email center 24 hr before next session to supplement the same."
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+  navigator.clipboard.writeText(`${copyText.value}`).then(() => {
+        window.alert(`Input: ${copyText.value}`);
+      })
+      .catch(() => {
+      	try {
+           var retVal = document.execCommand("copy");
+           console.log('Copy to clipboard returns: ' + retVal); 
+       } catch (err) { console.log('Error while copying to clipboard: ' + err); };
+      });
+
+  	//window.alert(`Input: ${numpagejoin}`);
+};
+</script>
+</section>
+</body>
+</html>
